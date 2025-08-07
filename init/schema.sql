@@ -3,7 +3,7 @@ CREATE TABLE Eventos (
     nome TEXT NOT NULL
 );
 
-CREATE Table Incritos (
+CREATE Table Inscritos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL,
@@ -18,5 +18,5 @@ CREATE Table Eventos_link (
     inscrito_id INTEGER NOT NULL,
     link TEXT,
     FOREIGN KEY (evento_id) REFERENCES Eventos (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (inscrito_id) REFERENCES Incritos (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (inscrito_id) REFERENCES Inscritos (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
