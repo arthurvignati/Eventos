@@ -1,0 +1,22 @@
+CREATE TABLE Eventos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL
+);
+
+CREATE Table Incritos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    email TEXT NOT NULL,
+    link TEXT,
+    evento_id INTEGER NOT NULL,
+    FOREIGN KEY (evento_id) REFERENCES Eventos (id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE Table Eventos_link (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    evento_id INTEGER NOT NULL,
+    inscrito_id INTEGER NOT NULL,
+    link TEXT,
+    FOREIGN KEY (evento_id) REFERENCES Eventos (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (inscrito_id) REFERENCES Incritos (id) ON DELETE CASCADE ON UPDATE CASCADE,
+);
