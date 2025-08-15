@@ -1,7 +1,9 @@
 from src.model.configs.connection import DBConnectionHandler
 from src.model.entities.eventos import Eventos
+from src.model.repositories.interfaces.eventos_repositories import EventosRepositoryInterface
 
-class EventosRepository:
+
+class EventosRepository(EventosRepositoryInterface):
     def insert(self, event_name: str) -> None:
         with DBConnectionHandler() as db: 
         #Ao criar o contexto (with ...) é criado a sessão em banco de dados e nesse momento temos acesso a tudo
