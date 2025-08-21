@@ -1,5 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from src.main.http_types.http_response import HttpResponse
+from src.main.http_types.http_request import HttpRequest
 
 
 #criar um agregador de rotas
@@ -9,5 +10,8 @@ event_route_bp = Blueprint("event_route", __name__)
 
 @event_route_bp.route("/event", methods=["POST"])
 def create_new_event():
+    http_request = HttpRequest(body=request.json) #Conseguimos ver aqui todos os "atributos" de um request que estão na padronização 
+    print(http_request.body)
+
     http_response = HttpResponse(body={ "estou": "aqui" }, status_code=201)
-    return jsonify(http_response.body), http_response.status_code
+    return jsonify(http_response.body), http_response.status_code   
